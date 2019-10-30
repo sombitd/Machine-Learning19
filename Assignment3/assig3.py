@@ -1,25 +1,14 @@
-'''           
-Name : Sombit Dey 
-Roll No. 17EC10056  
-
-to excecute : change the filename , 
-            python3.5 17EC10056.py
-
-
-'''
-
-
 import numpy as np 
 import math
+
 label1 = ["1st","2nd","3rd","crew"]
 label2 = ['adult','child']
 label3 = ['male','female']
 target_label = ['yes','no']
 complete = [label1, label2 , label3 ,target_label]
-# l = []
-# l = complete
 
-filename = '/home/sombit/Machine-Learning19/Assignment1/data1_19.csv'
+
+filename = '/home/sombit/Machine-Learning19/Assignment3/data3_19.csv'
 def get_data():
     # my_data = np.genfromtxt('/home/sombit/Machine-Learning19/Assignment1/data1_19.csv', delimiter=',')
     # return my_data
@@ -35,6 +24,7 @@ def get_data():
         # for i in range(len(row)):
         #   row[i] = int(row[i])
         train_data.append(row)
+    
     return np.asarray(train_data)   
 
 def entropy( data,label,naya):
@@ -88,7 +78,7 @@ def get_m(data):
     if(pos>neg ):
         return 1
     return 0
-def create_tree(data,level,compl):
+def create_tree(data,level,compl,tree):
     if(len(data[0]) <1):
         return
     first = entropy_initial(data)
@@ -110,6 +100,8 @@ def create_tree(data,level,compl):
         if( (first - curr_sum ) > max_sum):
             max_sum = first - curr_sum
             max_label = k
+    tree = list(compl[max_label])
+    print(tree , "k " , max_label)
     if( max_sum == 0):
         for j in range(level):
             print("--",end=" ")
@@ -132,16 +124,17 @@ def create_tree(data,level,compl):
         # print(data_new.shape)
         naya = compl.copy()
         del naya[max_label]
-
-        create_tree( data_new , level+1,naya)
-    return
-
+        create_tree( data_new , level+1,naya, tree[k])
+    return tree
 
 
 def main ():
+    # tree = {label : {}}
+    tree = ][
     data = get_data()
-    print (data)
     data = np.delete(data,0,0)
+    weights = np.ones(len(data))/len(data)
+    print (weights)
     # first = entropy_initial(data)
     # # print (entropy( data ,2))
     # max_label = 0
@@ -151,9 +144,7 @@ def main ():
     #     if( (first - curr_sum ) > max_sum):
     #         max_sum = first - curr_sum
     #         max_label = k
-    create_tree(data , 0 , complete)
+    # create_tree(data , 0 , complete,tree)
+    print(create_tree(data , 0 , complete,tree))
     
-
-            
-
 main()
