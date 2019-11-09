@@ -62,7 +62,7 @@ def findEntropyAtt(data,attribute):
     Class = data.keys()[-1]   
     target_variables = data[Class].unique()  
     variables = data[attribute].unique()    
-    entropy2 = 0
+    entropy2 = 0-
     for variable in variables:
         entropy = 0
         for target_variable in target_variables:

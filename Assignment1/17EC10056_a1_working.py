@@ -2,7 +2,7 @@
 Name : Sombit Dey 
 Roll No. 17EC10056  
 
-to excecute : 
+to excecute : change the filename , 
             python3.5 17EC10056.py
 
 
@@ -19,7 +19,7 @@ complete = [label1, label2 , label3 ,target_label]
 # l = []
 # l = complete
 
-filename = '/home/sombit/Machine-Learning19/Assignment1/data1_19.csv'
+filename = 'data1_19.csv'
 def get_data():
     # my_data = np.genfromtxt('/home/sombit/Machine-Learning19/Assignment1/data1_19.csv', delimiter=',')
     # return my_data
@@ -140,20 +140,17 @@ def create_tree(data,level,compl):
 
 def main ():
     data = get_data()
-    print (data)
     data = np.delete(data,0,0)
-    first = entropy_initial(data)
-    # print (entropy( data ,2))
-    max_label = 0
-    max_sum = first - entropy(data,0) 
-    for k in range (1, len(data[0])-1):
-        curr_sum = entropy(data,k);
-        if( (first - curr_sum ) > max_sum):
-            max_sum = first - curr_sum
-            max_label = k
+    # first = entropy_initial(data)
+    # # print (entropy( data ,2))
+    # max_label = 0
+    # max_sum = first - entropy(data,0) 
+    # for k in range (1, len(data[0])-1):
+    #     curr_sum = entropy(data,k);
+    #     if( (first - curr_sum ) > max_sum):
+    #         max_sum = first - curr_sum
+    #         max_label = k
     create_tree(data , 0 , complete)
-    
 
-            
 
 main()

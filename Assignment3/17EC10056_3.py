@@ -49,8 +49,6 @@ def get_data_test(filename):
 
     for i in range(len(data)-1):    
         row = data[i].split(',')
-        # for i in range(len(row)):
-        #   row[i] = int(row[i])
         train_data.append(row)
     # data = train_data[]
     df = pd.DataFrame(train_data,columns=['pclass','age','gender','survived'])   
@@ -65,7 +63,7 @@ def entropy(data,attribute,prob):   ## entropy for split
         entropy = 0
         for var2 in target:
             num = data[attribute][data[attribute]==var][data[Class] ==var2]
-            # print("yeh lo ", num.index)
+            # print("test ", num.index)
             # num = data.index.get_loc(data.index[data[attribute][data[attribute]==variable][data[Class] ==target_variable]][0])
         
             x  = [prob[i] for i in num.index]
